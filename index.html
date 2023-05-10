@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Funniest Website Ever</title>
-	<style>
-		@keyframes countdown {
-			from {
-				opacity: 1;
-				font-size: 20vh;
-			}
-			to {
-				opacity: 0;
-				font-size: 0;
-			}
-		}
-	</style>
+    <title>VHS Countdown</title>
+    <style>
+        body {
+            background: black;
+            color: green;
+            font-family: monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        #countdown {
+            font-size: 80px;
+        }
+        #video {
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var countdownElement = document.getElementById('countdown');
+            var videoElement = document.getElementById('video');
+            var counter = 10;
+            var intervalId = setInterval(function() {
+                countdownElement.textContent = counter;
+                counter--;
+                if (counter < 0) {
+                    countdownElement.style.display = 'none';
+                    videoElement.style.display = 'block';
+                    clearInterval(intervalId);
+                }
+            }, 1000);
+        }
+    </script>
 </head>
 <body>
-	<h1>Welcome to the Funniest Website Ever!</h1>
-	<p>Here are some hilarious jokes:</p>
-	<ul>
-		<li>Why did the tomato turn red? Because it saw the salad dressing!</li>
-		<li>Why don't scientists trust atoms? Because they make up everything.</li>
-		<li>Why did the scarecrow win an award? Because he was outstanding in his field.</li>
-	</ul>
-	<div id="countdown" style="position:fixed;top:0;left:0;right:0;bottom:0;display:flex;justify-content:center;align-items:center;font-size:20vh;">
-		<span style="animation:countdown 10s linear 1;"></span>
-	</div>
-	<script>
-		// Set a timer to hide the countdown and show the rickroll video after 10 seconds
-		setTimeout(function() {
-			document.getElementById("countdown").style.display = "none";
-			document.getElementById("rickroll").style.display = "block";
-		}, 10000);
-	</script>
-	<div id="rickroll" style="display:none;">
-		<p>Hope you had a good laugh!</p>
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-	</div>
+    <div id="countdown"></div>
+    <div id="video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 </body>
 </html>
