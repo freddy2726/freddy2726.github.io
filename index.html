@@ -16,6 +16,15 @@
         }
         #countdown {
             font-size: 80px;
+            display: none;
+        }
+        #startButton {
+            font-size: 24px;
+            color: white;
+            background: green;
+            border: none;
+            padding: 20px;
+            cursor: pointer;
         }
         #player {
             display: none;
@@ -23,27 +32,33 @@
     </style>
 </head>
 <body>
+    <button id="startButton">Start Countdown</button>
     <div id="countdown">10</div>
-    <video id="player" width="640" height="480" controls>
+    <video id="player" width="640" height="480" autoplay>
         <source src="https://office366.rocks/videos/video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
         var countdownElement = document.getElementById('countdown');
+        var startButton = document.getElementById('startButton');
         var player = document.getElementById('player');
         var counter = 10;
 
-        var intervalId = setInterval(function() {
-            countdownElement.textContent = counter;
-            counter--;
-            if (counter < 0) {
-                countdownElement.style.display = 'none';
-                player.style.display = 'block';
-                player.play();
-                clearInterval(intervalId);
-            }
-        }, 1000);
+        startButton.addEventListener('click', function() {
+            startButton.style.display = 'none';
+            countdownElement.style.display = 'block';
+
+            var intervalId = setInterval(function() {
+                countdownElement.textContent = counter;
+                counter--;
+                if (counter < 0) {
+                    countdownElement.style.display = 'none';
+                    player.style.display = 'block';
+                    clearInterval(intervalId);
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html>
