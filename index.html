@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html class=" hir idc0_347 bzjafuywne" lang="en"><head>
-<link rel="stylesheet" href="stylesheet.css">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pipi und Kaka im Pipikakaland</title>
-<h1>pipi und kaka im pipikaka land</h1>
+<html>
+<head>
+	<title>Funniest Website Ever</title>
+</head>
+<body>
+	<h1>Welcome to the Funniest Website Ever!</h1>
+	<p>Here are some hilarious jokes:</p>
+	<ul>
+		<li>Why did the tomato turn red? Because it saw the salad dressing!</li>
+		<li>Why don't scientists trust atoms? Because they make up everything.</li>
+		<li>Why did the scarecrow win an award? Because he was outstanding in his field.</li>
+	</ul>
+	<p>Get ready for a funny video in...</p>
+	<p id="countdown">10</p>
+	<script>
+		// Set the countdown timer to 10 seconds
+		var countdown = 10;
 
-</body></html>
+		// Define a function to update the countdown timer
+		function updateCountdown() {
+			countdown--;
+			document.getElementById("countdown").innerHTML = countdown;
+			if (countdown == 0) {
+				// If the countdown reaches 0, show the rickroll video
+				document.getElementById("rickroll").style.display = "block";
+			} else {
+				// If the countdown is not 0 yet, continue counting down
+				setTimeout(updateCountdown, 1000);
+			}
+		}
+
+		// Start the countdown when the page loads
+		setTimeout(updateCountdown, 1000);
+	</script>
+	<div id="rickroll" style="display:none;">
+		<p>Hope you had a good laugh!</p>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
+</body>
+</html>
