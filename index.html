@@ -17,31 +17,53 @@
         #countdown {
             font-size: 80px;
         }
-        #video {
+        #player {
             display: none;
         }
     </style>
-    <script>
-        window.onload = function() {
-            var countdownElement = document.getElementById('countdown');
-            var videoElement = document.getElementById('video');
-            var counter = 10;
-            var intervalId = setInterval(function() {
-                countdownElement.textContent = counter;
-                counter--;
-                if (counter < 0) {
-                    countdownElement.style.display = 'none';
-                    videoElement.style.display = 'block';
-                    clearInterval(intervalId);
-                }
-            }, 1000);
-        }
-    </script>
 </head>
 <body>
-    <div id="countdown"></div>
-    <div id="video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <div id="countdown">10</div>
+    <div id="player"></div>
+
+    <script>
+        var countdownElement = document.getElementById('countdown');
+        var counter = 10;
+        var player;
+
+        // Load the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // This function creates an <iframe> (and YouTube player)
+        // after the API code downloads.
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: 'dQw4w9WgXcQ',
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        // The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            event.target.pauseVideo();
+        }
+
+        var intervalId = setInterval(function() {
+            countdownElement.textContent = counter;
+            counter--;
+            if (counter < 0) {
+                countdownElement.style.display = 'none';
+                player.playVideo();
+                clearInterval(intervalId);
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
