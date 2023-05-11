@@ -1,64 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>VHS Countdown</title>
-    <style>
-        body {
-            background: black;
-            color: green;
-            font-family: monospace;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-        #countdown {
-            font-size: 80px;
-            display: none;
-        }
-        #startButton {
-            font-size: 24px;
-            color: white;
-            background: green;
-            border: none;
-            padding: 20px;
-            cursor: pointer;
-        }
-        #player {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <button id="startButton">Start Countdown</button>
-    <div id="countdown">10</div>
-    <video id="player" width="640" height="480" autoplay>
-        <source src="https://office366.rocks/videos/video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+<html class=" hir idc0_347 bzjafuywne" lang="en"><head>
+<link rel="stylesheet" href="stylesheet.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pipi und Kaka im Pipikakaland</title>
+<h1>pipi und kaka im pipikaka land</h1>
 
-    <script>
-        var countdownElement = document.getElementById('countdown');
-        var startButton = document.getElementById('startButton');
-        var player = document.getElementById('player');
-        var counter = 10;
-
-        startButton.addEventListener('click', function() {
-            startButton.style.display = 'none';
-            countdownElement.style.display = 'block';
-
-            var intervalId = setInterval(function() {
-                countdownElement.textContent = counter;
-                counter--;
-                if (counter < 0) {
-                    countdownElement.style.display = 'none';
-                    player.style.display = 'block';
-                    clearInterval(intervalId);
-                }
-            }, 1000);
-        });
-    </script>
-</body>
-</html>
+</body></html>
